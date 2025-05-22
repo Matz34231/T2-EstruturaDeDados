@@ -39,7 +39,7 @@ public class FilaDocumento {
     public int buscarDocumento(String nomeArquivo) {
         for (int i = primeiro, cont = 0; cont < ocupacao; cont++, i = proximaPosicao(i)) {
             if (dados[i].getNomeArquivo().equalsIgnoreCase(nomeArquivo)) {
-                return cont; 
+                return cont;    
             }
         }
         return -1;
