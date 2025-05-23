@@ -1,6 +1,6 @@
 import java.time.LocalDateTime;
 
-public class Documento{
+public class PilhaDocumento{
     private String nomeArquivo;
     private String nomeUsuario;
     private LocalDateTime horarioSolicitacao;
