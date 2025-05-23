@@ -6,7 +6,7 @@ public class PilhaDocumento{
     private LocalDateTime horarioSolicitacao;
     private LocalDateTime horarioImpressao;
 
-    public Documento(String nomeArquivo, String nomeUsuario){
+    public PilhaDocumento(String nomeArquivo, String nomeUsuario){
         this.nomeArquivo = nomeArquivo;
         this.nomeUsuario = nomeUsuario;
         this.horarioSolicitacao = LocalDateTime.now();
