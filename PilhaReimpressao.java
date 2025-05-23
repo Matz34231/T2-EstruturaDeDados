@@ -15,33 +15,32 @@ public class PilhaReimpressao {
         return tamanho >= capacidadeMaxima;
     }
 
-    // Adiciona um documento no topo da pilha
- public void push(Documento doc) {
-    if (estaCheia()) {
-        System.out.println("Capacidade máxima atingida. Não é possível adicionar: " + doc.getNomeArquivo());
-        return;
+    public void push(PilhaDocumento doc) {
+        if (estaCheia()) {
+            System.out.println("Capacidade máxima atingida. Não é possível adicionar: " + doc.getNomeArquivo());
+            return;
+        }
+
+        No novo = new No(doc);  
+        novo.setProximo(topo);
+        topo = novo;
+        tamanho++;
     }
 
-    No novo = new No(doc);  
-    novo.setProximo(topo);
-    topo = novo;
-    tamanho++;
-}
+    public PilhaDocumento pop() {
+        if (estaVazia()) throw new RuntimeException("Pilha vazia");
 
-public Documento pop() {
-    if (estaVazia()) throw new RuntimeException("Pilha vazia");
+        PilhaDocumento doc = topo.getInfo();
 
-    Documento doc = topo.getInfo();
+        // Registra o horário da reimpressão corretamente
+        doc.impressaoImpressao();
 
-    // Registra o hoário de reimpressão
-    doc.impressaoImpressao(); 
-    topo = topo.getProximo();
-    tamanho--;
-    return doc;
-}
+        topo = topo.getProximo();
+        tamanho--;
+        return doc;
+    }
 
-
-    public Documento peek() {
+    public PilhaDocumento peek() {
         if (estaVazia()) throw new RuntimeException("Pilha vazia");
         return topo.getInfo();
     }
@@ -66,20 +65,15 @@ public Documento pop() {
         return -1;
     }
 
-        @Override
-        public String toString() {
-            if (estaVazia()) return "Pilha vazia\n";
-
-            StringBuilder sb = new StringBuilder("Pilha de Reimpressão:\n");
-            No atual = topo;
-            while (atual != null) {
-                sb.append(atual).append("\n");
-                atual = atual.getProximo();
-            }
-            return sb.toString();
+    @Override
+    public String toString() {
+        if (estaVazia()) return "Pilha vazia\n";
+        String resultado = "Pilha de Reimpressão:\n";
+        No atual = topo;
+        while (atual != null) {
+            resultado += atual + "\n";
+            atual = atual.getProximo();
         }
-
-        public int getTamanho() {
-            return tamanho;
-        }
+        return resultado;
     }
+}

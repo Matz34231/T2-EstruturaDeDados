@@ -1,11 +1,11 @@
 public class No {
-    private Documento info;
+    private PilhaDocumento info;
     private No proximo;
 
-    public No(Documento info) {
+    public No(PilhaDocumento info) {
         this.info = info;
     }
-    public Documento getInfo() {
+    public PilhaDocumento getInfo() {
         return info;
     }
     public No getProximo() {
