@@ -1,9 +1,9 @@
 public class FilaDocumento {
-    private Documento[] dados;
+    private PilhaDocumento[] dados;
     private int primeiro, ultimo, ocupacao;
 
     public FilaDocumento(int capacidade) {
-        dados = new Documento[capacidade];
+        dados = new PilhaDocumento[capacidade];
         primeiro = 0;
         ultimo = 0;
         ocupacao = 0;
@@ -21,16 +21,16 @@ public class FilaDocumento {
         return (posicao + 1) % dados.length;
     }
 
-    public void enfileira(Documento doc) {
+    public void enfileira(PilhaDocumento doc) {
         if (filaCheia()) throw new RuntimeException("Fila cheia.");
         dados[ultimo] = doc;
         ultimo = proximaPosicao(ultimo);
         ocupacao++;
     }
 
-    public Documento desenfileira() {
+    public PilhaDocumento desenfileira() {
         if (filaVazia()) throw new RuntimeException("Fila vazia.");
-        Documento temp = dados[primeiro];
+        PilhaDocumento temp = dados[primeiro];
         primeiro = proximaPosicao(primeiro);
         ocupacao--;
         return temp;
